@@ -3,9 +3,24 @@ Full Name: Karthik Prathaban
 <br> Email Address: karthik93@outlook.sg <br> <br>
 
 <H1> B. Folder Structure </H1>
-data: survive.db
-src: main.py
-eda.ipynb
+
+```
+├── src
+│   ├── config.YAML          # Document for user to define pre-processing / machine learning parameters
+│   ├── machine learning
+│   │   ├── __init__.py
+│   │   ├── models.py
+│   ├── preprocessing 
+│   │   ├── __init__.py
+│   │   ├── preprocess.py
+├── data
+│   ├── survive.db
+├── eda.ipynb
+├── README.md
+├── requirements.txt
+└── run.sh
+```
+
 
 <H1> C. Instructions for Executing Pipeline </H1>
 

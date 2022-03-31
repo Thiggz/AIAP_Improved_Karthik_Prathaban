@@ -1,0 +1,76 @@
+#Database Location
+database: "data/survive.db"
+
+#------DATABASE PREPROCESSING PARAMETERS------#
+
+#### RENAME COLUMNS #####
+#Renaming configuration for columns in dictionary format,
+#e.g. {'x': 'y', 'a': 'b'} where x is the original name of the feature and y is the name you want it replaced with
+rename_dict: {'Pletelets': 'Platelets',
+              'Creatinine phosphokinase': 'Creatine phosphokinase'}
+
+#### NUMERICAL FEATURES #####
+#Numerical features in your Dataframe (After renaming)
+num_cols: ['Age',
+           'Sodium',
+           'Platelets',
+           'Creatine phosphokinase',
+           'Creatinine',
+           'Blood Pressure',
+           'Hemoglobin',
+           'Height',
+           'Weight']
+
+#### CATEGORICAL FEATURES #####
+#Categorical features in your Dataframe (After renaming)
+cat_cols: ['Gender',
+           'Smoke',
+           'Diabetes',
+           'Ejection Fraction']
+
+#### IRRELEVANT FEATURES #####
+#Features that are irrelevant to your investigation, to be removed from the dataframe
+irrelevant: ['ID',
+             'Favorite color']
+
+#### FEATURES TO APPLY ABSOLUTE #####
+#Features that are suspected/known to have values that should be positive but were incorrectly input as negative
+abs_cols: ['Age']
+
+#### ORDINAL VARIABLES #####
+#Creates custom ordinal variables using a nested dictionary
+#Note: Each ordinal variable should be declared in a dictionary - the keys refer to the names of the ranges you are
+#creating and the values refer to the upper value limits. The first (left-most) key has its lower limit set at 0 (>= 0)
+#The next value takes its lower limit from the upper limit of the previous value, so on so forth
+#NOTE: A variable without an upper limit should be given the key 'stop'HEhe okay
+
+#e.g. {Sodium: 'Sodium': {'hyponatremia': 135, 'normal_sodium': 145, 'hypernatremia': 'stop'} means:
+#for a particular value of x, x = 'hyponatremia' if x>=0 & x<135, x = normal sodium if x>=135 & x<145
+#x = 'hypernatremia' if x>=145
+ordinal: {'Sodium': {'hyponatremia': 135, 'normal_sodium': 145, 'hypernatremia': 'stop'},
+          'Platelets': {'thrombocytopenia': 150000, 'normal_platelets': 450000, 'thrombocytosis': 'stop'}}
+
+#### CATEGORICAL VALUE REPLACEMENT ####
+correct_instruction: {'Survive': {'No': 0, 'Yes': 1, '0': 0, '1': 1},
+                       'Smoke': {'NO': 'No', 'YES': 'Yes'},
+                       'Ejection Fraction': {'L': 'Low', 'N': 'Normal'}}
+
+#### BMI ####
+#Calculates BMI, if key is set to 1
+bmi_key: 1
+
+#Training Parameters:
+test_size: 0.2
+
+#------CLASSIFIER PARAMETERS------#
+#### K-Nearest Neighbours (KNN) Parameters ####
+knn_n_neighbors: 5
+knn_weights: 'uniform'
+knn_algorithm: 'auto'
+knn_leaf_size: 30
+knn_p: 2
+knn_metric: ’minkowski’
+knn_metric_params: None
+knn_n_jobs: None
+
+#### K-Nearest Neighbours (KNN) Parameters ####

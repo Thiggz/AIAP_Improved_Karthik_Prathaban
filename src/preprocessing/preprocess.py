@@ -1,16 +1,17 @@
 from sklearn import preprocessing
+import yaml
 
-num_cols = ['Age', 'Sodium', 'Platelets', 'Creatine phosphokinase', 'Creatinine', 'Blood Pressure', 'Hemoglobin',
-            'Height', 'Weight']
-cat_cols = ['Gender', 'Smoke', 'Diabetes', 'Ejection Fraction']
-rename_dict = {'Pletelets': 'Platelets', 'Creatinine phosphokinase': 'Creatine phosphokinase'}
-irrelevant = ['ID', 'Favorite color']
-abs_cols = ['Age']
-ordinal = {'Sodium': {'hyponatremia': 135, 'normal_sodium': 145, 'hypernatremia': 'stop'},
-           'Platelets': {'thrombocytopenia': 150000, 'normal_platelets': 450000, 'thrombocytosis': 'stop'}}
-correct_instruction = {'Survive': {'No': 0, 'Yes': 1, '0': 0, '1': 1},
-                       'Smoke': {'NO': 'No', 'YES': 'Yes'},
-                       'Ejection Fraction': {'L': 'Low', 'N': 'Normal'}}
+with open('config.YAML') as file:
+    config = yaml.safe_load(file)
+
+rename_dict = config['rename_dict']
+num_cols = config['num_cols']
+cat_cols = config['cat_cols']
+irrelevant = config['irrelevant']
+abs_cols = config['abs_cols']
+ordinal = config['ordinal']
+correct_instruction = config['correct_instruction']
+bmi_calc = config['bmi_key']
 
 
 class PreProcess:
@@ -86,7 +87,6 @@ class PreProcess:
         """
         corrected = df
         for feature, replace in correct_instruction.items():
-            print(feature, replace)
             for incorrect in replace:
                 corrected[feature].replace({incorrect: replace[incorrect]}, inplace=True)
 
@@ -104,7 +104,6 @@ class PreProcess:
         global cat_cols
         global num_cols
         for feature, divisions in ordinal.items():
-            print(feature)
             new_feature = feature + '_condition'
             base = 0
             ceil = 0
@@ -118,9 +117,11 @@ class PreProcess:
                 cat_cols.append(new_feature)
 
         # Calculate BMI based on Height and Weight
-        bmi = corrected.apply(lambda x: (x.Weight / ((x.Height / 100) ** 2)), axis=1)
-        corrected['BMI'] = bmi
-        num_cols.append(bmi)
+        if bmi_calc == 1:
+            bmi = corrected.apply(lambda x: (x.Weight / ((x.Height / 100) ** 2)), axis=1)
+            corrected['BMI'] = bmi
+            num_cols.append(bmi)
+
         return corrected
 
     def _labelencode(self, df, cat_cols):

@@ -1,9 +1,9 @@
-<H1> A. Particulars </H1>
+<H2> A. Particulars </H2>
 
-####Full Name: Karthik Prathaban
-####Email Address: karthik93@outlook.sg <br>
+<H3>Full Name: Karthik Prathaban<br>
+Email Address: karthik93@outlook.sg
 
-<H1> B. Folder Structure </H1>
+<H2> B. Folder Structure </H2>
 
 ```
 ├── src
@@ -14,6 +14,9 @@
 │   ├── preprocessing 
 │   │   ├── __init__.py
 │   │   ├── preprocess.py
+│   ├── evaluation
+│   │   ├── __init__.py
+│   │   ├── model_eval.py  
 ├── data
 │   ├── survive.db
 ├── eda.ipynb
@@ -22,26 +25,34 @@
 └── run.sh
 ```
 
-<H1> C. Instructions for Executing Pipeline </H1>
-<H2> 1. Installation and Execution </H2>
+<H2> C. Instructions for Executing Pipeline </H2>
 
-<H2> 2. Parameter Modification </H2>
+1. Ensure python3 is installed: ```$ sudo apt-get install python3```
+2. Navigate to the source folder (e.g. ```$ cd /mnt/c/exampleuser/documents/AIAP_Improved_Karthik_Prathaban``` in WSL)
+3. Install required packages from the provided requirements folder: ```$ pip install -r requirements.txt```
+4. *Optional*: Open **config.yaml** in the **/src** subfolder and alter the processing, machine learning and testing parameters per your preference 
+5. Ensure run.sh is executable: ```chmod u+x run.sh```
+6. Run the program ```./run.sh```
+
+<H2> D. Steps / Flow of Pipeline </H2>
+
+<img src = "Figures/Workflow.png" width="496" height="619">
 
 
 
-<H1> D. Steps / Flow of Pipeline </H1>
-
-<H1> E. EDA Findings </H1>
+<H2> E. EDA Findings </H2>
 <H3> Data distributions and errors</H3>
 
-1. ####Missing values were observed for 'Creatinine'
-2. ####Negative values were observed for 'Age'
+1. Mssing values were observed for 'Creatinine'
+2. Negative values were observed for 'Age'
 3. Data 
 
 <H3> 2. </H3>
 
-<H1> F. Choice of ML Models </H1>
+<H2> F. Choice of ML Models </H2>
 
-<H1> G. Model Evaluation </H1>
+<H2> G. Model Evaluation </H2>
 
-<H1> H. Other Considerations </H1>
+<H2> H. Other Considerations </H2>
+
+<H2> Update </H2>

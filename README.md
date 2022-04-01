@@ -1,6 +1,7 @@
 <H1> A. Particulars </H1>
-Full Name: Karthik Prathaban
-<br> Email Address: karthik93@outlook.sg <br> <br>
+
+####Full Name: Karthik Prathaban
+####Email Address: karthik93@outlook.sg <br>
 
 <H1> B. Folder Structure </H1>
 
@@ -9,7 +10,7 @@ Full Name: Karthik Prathaban
 │   ├── config.YAML          # Document for user to define pre-processing / machine learning parameters
 │   ├── machine learning
 │   │   ├── __init__.py
-│   │   ├── models.py
+│   │   ├── models.py   
 │   ├── preprocessing 
 │   │   ├── __init__.py
 │   │   ├── preprocess.py
@@ -21,13 +22,23 @@ Full Name: Karthik Prathaban
 └── run.sh
 ```
 
-
 <H1> C. Instructions for Executing Pipeline </H1>
+<H2> 1. Installation and Execution </H2>
+
+<H2> 2. Parameter Modification </H2>
 
 
-<H1> D. Steps/Flow of Pipeline </H1>
+
+<H1> D. Steps / Flow of Pipeline </H1>
 
 <H1> E. EDA Findings </H1>
+<H3> Data distributions and errors</H3>
+
+1. ####Missing values were observed for 'Creatinine'
+2. ####Negative values were observed for 'Age'
+3. Data 
+
+<H3> 2. </H3>
 
 <H1> F. Choice of ML Models </H1>
 

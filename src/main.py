@@ -41,7 +41,7 @@ print('Training complete\n')
 
 ## Test classifiers and print default evaluation metrics
 
-if config["test_size"] > 0:
+if config['test_size'] > 0:
 
     print('Test set available, testing models\n')
 
@@ -53,5 +53,9 @@ if config["test_size"] > 0:
                    'Balanced Bagging': bb_preds,
                    'Random Forest': rf_preds}
 
-    for key in predictions:
-        model_eval.default_metrics(y_test, predictions[key], key)
+    if config['detailed_metrics'] == 1:
+        for key in predictions:
+            model_eval.detailed_metrics(y_test, predictions[key], key)
+    else:
+        for key in predictions:
+            model_eval.default_metrics(y_test, predictions[key], key)

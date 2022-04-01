@@ -11,9 +11,9 @@ with open('config.YAML') as file:
 def knn(x_train, y_train):
     """Train a K-Nearest Neighbour classifier on the training data provided
 
-    :param x_train:Independent variables
-    :param y_train:Dependent variable
-    :return:Trained KNN classifier
+    :param x_train: Independent variables
+    :param y_train: Dependent variable
+    :return: Trained KNN classifier
     """
     classifier = KNeighborsClassifier(n_neighbors=config['knn_n_neighbors'],
                                       weights=config['knn_weights'],
@@ -31,9 +31,9 @@ def knn(x_train, y_train):
 def balanced_bagging(x_train, y_train):
     """Train a Balanced Bagging classifier with a Decision Tree base estimator on the training data provided
 
-    :param x_train:Independent variables
-    :param y_train:Dependent variable
-    :return:Trained Balanced Bagging classifier
+    :param x_train: Independent variables
+    :param y_train: Dependent variable
+    :return: Trained Balanced Bagging classifier
     """
     classifier = BalancedBaggingClassifier(base_estimator=DecisionTreeClassifier(),
                                            n_estimators=config['bb_n_estimators'],
@@ -57,6 +57,12 @@ def balanced_bagging(x_train, y_train):
 
 
 def random_forest(x_train, y_train):
+    """Train a Random Forest Classifier on the training data provided
+
+    :param x_train: Independent variables
+    :param y_train: Dependent variable
+    :return: Trained Random Forest classifier
+    """
     classifier = RandomForestClassifier(n_estimators=config['rf_n_estimators'],
                                         criterion=config['rf_criterion'],
                                         max_depth=config['rf_max_depth'],

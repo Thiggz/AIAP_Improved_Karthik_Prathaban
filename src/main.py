@@ -53,6 +53,8 @@ if config['test_size'] > 0:
                    'Balanced Bagging': bb_preds,
                    'Random Forest': rf_preds}
 
+    # Prints detailed evaluation metrics, or default metrics if user does not request in config
+
     if config['detailed_metrics'] == 1:
         for key in predictions:
             model_eval.detailed_metrics(y_test, predictions[key], key)

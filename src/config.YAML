@@ -109,3 +109,8 @@ rf_warm_start: False
 rf_class_weight:
 rf_ccp_alpha: 0
 rf_max_samples:
+
+#----------------Evaluation Parameters----------------#
+#### Key to print detailed metric
+#f 1: prints default metrics: accuracy, precision and recall as well as F1-Score, Specificity and Confusion Matrix
+detailed_metrics:

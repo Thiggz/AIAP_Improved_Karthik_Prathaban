@@ -7,19 +7,20 @@ Email Address: karthik93@outlook.sg
 
 ```
 ├── src
+│   ├── main.py              # Runs program (preprocessing -> machine learning -> model evaluation)
 │   ├── config.YAML          # Document for user to define pre-processing / machine learning parameters
 │   ├── machine learning
 │   │   ├── __init__.py
-│   │   ├── models.py   
+│   │   ├── models.py        # Trains machine learning models
 │   ├── preprocessing 
 │   │   ├── __init__.py
-│   │   ├── preprocess.py
+│   │   ├── preprocess.py    # Pre-processes DataFrame 
 │   ├── evaluation
 │   │   ├── __init__.py
-│   │   ├── model_eval.py  
+│   │   ├── model_eval.py    # Evaluates trained models
 ├── data
-│   ├── survive.db
-├── eda.ipynb
+│   ├── survive.db           # Survive database
+├── eda.ipynb                # Exploratory data analysis
 ├── README.md
 ├── requirements.txt
 └── run.sh
